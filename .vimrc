@@ -57,14 +57,14 @@ endfunction
 
 function! StatuslineGit()
   let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.'':''
+  return strlen(l:branchname) > 0?''.l:branchname.'':''
 endfunction
 
 
 " status bar colors
-au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta
-au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
-hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
+au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=white ctermbg=green
+au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=white ctermbg=red
+hi statusline guifg=black guibg=#8fbfdc ctermfg=white ctermbg=red
 
 " Status line
 " default: set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
@@ -105,7 +105,7 @@ let g:z=StatuslineGit()
 :if strlen(z)
     let g:y = GitSymbol()
     set statusline+=%2*%{toupper(y)}      " Encoding
-    set statusline+=%2*%{toupper(z)}      " Encoding
+    set statusline+=%2*%{z}      " Encoding
 :else
     set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}      " Encoding
 :endif
