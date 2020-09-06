@@ -51,13 +51,9 @@ function! GitBranch()
 endfunction
 
 function! GitSymbol()
-	echo 'sivakishore'
-  l:symbol = system("echo '\ue0a0' 2>/dev/null | tr -d '\n'")
-  echo 'siri'
-  echo symbol
+  return system("echo '\ue0a0' 2>/dev/null | tr -d '\n'")
 endfunction
 
-"let l:x = GitSymbol()
 
 function! StatuslineGit()
   let l:branchname = GitBranch()
@@ -107,7 +103,8 @@ set statusline+=%2*\ %Y\                                  " FileType
 "set statusline+=%2*│                                     " Separator
 let g:z=StatuslineGit() 
 :if strlen(z)
-"    set statusline+=%2*% system('echo "\ue0a0"')
+    let g:y = GitSymbol()
+    set statusline+=%2*%{toupper(y)}      " Encoding
     set statusline+=%2*%{toupper(z)}      " Encoding
 :else
     set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}      " Encoding
