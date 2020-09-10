@@ -7,8 +7,8 @@ set clipboard=unnamed
 
 "set rtp+=/Users/siya/Library/Python/3.7/lib/python/site-packages/powerline/bindings/vim
 
-if filereadable( expand("$HOME/~/.vim/bundle/Vundle.vim") )
 
+if isdirectory(expand("$HOME/.vim/bundle/Vundle.vim") )
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
@@ -20,13 +20,6 @@ if filereadable( expand("$HOME/~/.vim/bundle/Vundle.vim") )
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'machakann/vim-highlightedyank'
     Plugin 'git://git.wincent.com/command-t.git'
-    Plugin 'wincent/command'
-    " git repos on your local machine (i.e. when working on your own plugin)
-    " The sparkup vim script is in a subdirectory of this repo called vim.
-    " Pass the path to set the runtimepath properly.
-    " Install L9 and avoid a Naming conflict if you've already installed a
-    " different version somewhere else.
-    " Plugin 'ascenator/L9', {'name': 'newL9'}
     
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -36,7 +29,7 @@ endif
 filetype plugin indent on    " required
 syntax enable
 
-if filereadable( expand("$HOME/.vim/colors/monokai.vim") )
+if filereadable(expand("$HOME/.vim/colors/monokai.vim") )
     colorscheme monokai
 
 if exists('+colorcolumn')
@@ -124,4 +117,3 @@ hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030
 hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e
 hi User5 ctermfg=233 ctermbg=241 guibg=#4e4e4e guifg=#4e4e4e cterm=bold
 hi User6 ctermfg=233 ctermbg=245 guibg=#4e4e4e guifg=#4e4e4e cterm=bold
-"usergroup 1 guibg=White ctermfg=137 guifg=Black ctermbg=234
