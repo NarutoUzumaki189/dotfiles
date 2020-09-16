@@ -1,0 +1,34 @@
+[merge]
+	tool = BeyondCompare3
+[diff]
+	guitool = beyondcompare3
+[core]
+	editor = vim
+[user]
+	name = spadavax
+	email = siva.kishorex.padavala@intel.com
+[difftool "beyondcompare3"]
+	path = C:/Program Files (x86)/Beyond Compare 3/bcomp.exe
+	cmd = \"C:/Program Files (x86)/Beyond Compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
+[mergetool "BeyondCompare3"]
+	path = C:/Program Files (x86)/Beyond Compare 3/bcomp.exe
+	cmd = \"C:/Program Files (x86)/Beyond Compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[pull]
+	rebase = false
+[fetch]
+	prune = false
+[rebase]
+	autoStash = false
+[includeIf "gitdir:C:/Users/itl/.vim/"]
+	[user]
+	name = narutouzumaki189
+	email = siva2thrones@gmail.com
+	[http "https://github.com/"]
+	proxy = proxy.jf.intel.com:911
+[includeIf "gitdir:/c/Users/spadavax/Documents/project/twitchchess"]
+	[user]
+	name = narutouzumaki189
+	email = siva2thrones@gmail.com
+	[http "https://github.com/geohot"]
+	proxy = proxy.jf.intel.com:911
+
