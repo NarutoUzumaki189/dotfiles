@@ -14,27 +14,40 @@ if isdirectory(expand("$HOME/.vim/bundle/Vundle.vim") )
     Plugin 'machakann/vim-highlightedyank'
     Plugin 'wincent/command-t.git'
     Plugin 'itchyny/lightline.vim'
-    "Plugin 'vim-airline/vim-airline'
     Plugin 'arcticicestudio/nord-vim'    
+    Plugin 'psf/black'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'scrooloose/syntastic'
+    "Plugin 'vim-syntastic/syntastic'
+    Plugin 'preservim/nerdtree'
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
 endif
+
 filetype plugin indent on    " required
 colorscheme nord
 set laststatus=2
+
+
+let g:black_linelength=80
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_mode_map = { 'mode': 'active',
+      \                      'active_filetypes': ['py'] }
+
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme' : 'nord',
       \ 'active': {
+      \   'right': [ [ 'lineinfo', 'syntastic' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ],
       \   'left': [ [ 'mode', 'paste' ],
        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-       \   'gitbranch': 'LightlineFugitive'
-      \ },     
-		\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-		\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }      
-		\ }
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'gitbranch': 'LightlineFugitive'
+      \ }
+      \ }
 function! LightlineFugitive()
 	if exists('*FugitiveHead')
 		let branch = FugitiveHead()
